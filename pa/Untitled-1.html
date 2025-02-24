@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suresh Generator Neemrana</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #0d0d0d;
+            color: white;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(20, 20, 20, 0.9));
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 50px;
+            animation: fadeIn 2s ease-in-out;
+        }
+        .image-container img {
+            width: 450px;
+            border-radius: 15px;
+            box-shadow: 10px 10px 30px rgba(255, 255, 255, 0.1);
+            animation: slideInLeft 1.5s ease-in-out;
+        }
+        .content {
+            text-align: left;
+            max-width: 600px;
+            animation: slideInRight 1.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideInLeft {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideInRight {
+            from { transform: translateX(100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            color: #e50914;
+        }
+        .contact-info, p {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #cccccc;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 1.3rem;
+            color: white;
+            background: #e50914;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s ease-in-out, transform 0.2s;
+        }
+        .btn:hover {
+            background: #b20710;
+            transform: scale(1.05);
+        }
+        .info-section {
+            position: relative;
+            margin-top: 100vh;
+            padding: 60px;
+            background: #181818;
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+        .info-section h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #e50914;
+        }
+        .services {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        .service-box {
+            background: #222;
+            padding: 25px;
+            border-radius: 12px;
+            width: 320px;
+            text-align: center;
+            box-shadow: 5px 5px 20px rgba(255, 255, 255, 0.1);
+            transform: scale(0.9);
+            transition: transform 0.3s ease-in-out;
+        }
+        .service-box:hover {
+            transform: scale(1);
+        }
+        .service-box h3 {
+            color: #e50914;
+            margin-bottom: 12px;
+        }
+        .map-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .map-container iframe {
+            width: 80%;
+            height: 400px;
+            border-radius: 10px;
+            border: none;
+            box-shadow: 5px 5px 20px rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <div class="image-container">
+            <img src="download.jpeg" alt="Suresh Generator Neemrana">
+        </div>
+        <div class="content">
+            <h1>Suresh Generator Neemrana</h1>
+            <div class="contact-info">
+                <p>📞 Contact: +91 9829325775</p>
+                <p>✉️ Email: suresh.powerplus@gmail.com</p>
+                <p>📍 Address: Neemrana, Rajasthan, India</p>
+            </div>
+            <p>Premium power backup solutions for industrial and residential needs. Reliable, efficient, and always ready.</p>
+            <a href="#info" class="btn">Learn More</a>
+        </div>
+    </div>
+    <div class="info-section" id="info">
+        <h2>Why Choose Us?</h2>
+        <p>We deliver top-notch generator services with outstanding maintenance and support. Our generators guarantee durability and maximum efficiency.</p>
+        <div class="services">
+            <div class="service-box">
+                <h3>Industrial Generators</h3>
+                <p>Reliable generators for industries ensuring seamless power supply.</p>
+            </div>
+            <div class="service-box">
+                <h3>Residential Backup</h3>
+                <p>Keep your home powered during outages with high-quality solutions.</p>
+            </div>
+            <div class="service-box">
+                <h3>Maintenance & Repair</h3>
+                <p>Comprehensive servicing and repairs for uninterrupted operations.</p>
+            </div>
+        </div>
+    </div>
+    <div class="map-container">
+        <h2>Our Location</h2>
+        <a href="https://www.google.com/maps?q=Neemrana+Rajasthan" target="_blank">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d448181.1526002219!2d76.82694859999999!3d27.988152949999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3972995fbe5c3b6b%3A0x9c19e3f9459242e!2sNeemrana%2C%20Rajasthan%2C%20India!5e0!3m2!1sen!2sus!4v1636480804824!5m2!1sen!2sus"></iframe>
+        </a>
+    </div>
+</body>
+</html>
