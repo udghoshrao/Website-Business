@@ -1,172 +1,475 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suresh Generator Neemrana</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Arial', sans-serif;
-            background: #0d0d0d;
-            color: white;
-        }
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(20, 20, 20, 0.9));
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 50px;
-            animation: fadeIn 2s ease-in-out;
-        }
-        .image-container img {
-            width: 450px;
-            border-radius: 15px;
-            box-shadow: 10px 10px 30px rgba(255, 255, 255, 0.1);
-            animation: slideInLeft 1.5s ease-in-out;
-        }
-        .content {
-            text-align: left;
-            max-width: 600px;
-            animation: slideInRight 1.5s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes slideInLeft {
-            from { transform: translateX(-100px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-        @keyframes slideInRight {
-            from { transform: translateX(100px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-        h1 {
-            font-size: 4rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 15px;
-            color: #e50914;
-        }
-        .contact-info, p {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: #cccccc;
-        }
-        .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 25px;
-            font-size: 1.3rem;
-            color: white;
-            background: #e50914;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: background 0.3s ease-in-out, transform 0.2s;
-        }
-        .btn:hover {
-            background: #b20710;
-            transform: scale(1.05);
-        }
-        .info-section {
-            position: relative;
-            margin-top: 100vh;
-            padding: 60px;
-            background: #181818;
-            text-align: center;
-            animation: fadeIn 2s ease-in-out;
-        }
-        .info-section h2 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: #e50914;
-        }
-        .services {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 40px;
-        }
-        .service-box {
-            background: #222;
-            padding: 25px;
-            border-radius: 12px;
-            width: 320px;
-            text-align: center;
-            box-shadow: 5px 5px 20px rgba(255, 255, 255, 0.1);
-            transform: scale(0.9);
-            transition: transform 0.3s ease-in-out;
-        }
-        .service-box:hover {
-            transform: scale(1);
-        }
-        .service-box h3 {
-            color: #e50914;
-            margin-bottom: 12px;
-        }
-        .map-container {
-            text-align: center;
-            margin-top: 50px;
-        }
-        .map-container iframe {
-            width: 80%;
-            height: 400px;
-            border-radius: 10px;
-            border: none;
-            box-shadow: 5px 5px 20px rgba(255, 255, 255, 0.1);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Suresh Generator Neemrana</title>
+
+  <!-- Bootstrap + Font Awesome + Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --primary: #ffd700;
+      --secondary: #ff8800;
+      --dark: #0a0a0a;
+      --dark-card: #1c1c1c;
+      --gray: #333;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--dark);
+      color: #fff;
+      line-height: 1.7;
+    }
+
+    /* Navbar Styling */
+    .navbar {
+      background-color: rgba(10, 10, 10, 0.95) !important;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.7);
+      padding: 15px 0;
+    }
+    
+    .navbar-brand {
+      font-weight: 700;
+      color: var(--primary) !important;
+      font-size: 1.4rem;
+    }
+    
+    .nav-link {
+      font-weight: 500;
+      padding: 8px 15px !important;
+      margin: 0 5px;
+      transition: color 0.3s;
+    }
+    
+    .nav-link:hover {
+      color: var(--primary) !important;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1603921326210-6edd2d60ca68') no-repeat center center;
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    /* Button Styling */
+    .btn-gold {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border: none;
+      color: #000;
+      padding: 14px 32px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+      color: #000;
+    }
+
+    /* Section Styling */
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 2rem;
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title:after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 4px;
+      background: var(--primary);
+      bottom: -10px;
+      left: 0;
+    }
+    
+    .text-center .section-title:after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Card Styling */
+    .service-card {
+      background-color: var(--dark-card);
+      border-radius: 15px;
+      padding: 40px 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--gray);
+      transition: transform 0.3s, box-shadow 0.3s;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(255, 215, 0, 0.2);
+      border-color: rgba(255, 215, 0, 0.3);
+    }
+    
+    .service-card h3 {
+      font-size: 1.8rem;
+      margin: 1rem 0;
+      color: var(--primary);
+    }
+
+    /* Icon Styling */
+    .service-icon {
+      color: var(--primary);
+      background: rgba(255, 215, 0, 0.1);
+      width: 80px;
+      height: 80px;
+      line-height: 80px;
+      border-radius: 50%;
+      margin: 0 auto 1.5rem;
+      transition: transform 0.3s;
+    }
+    
+    .service-card:hover .service-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    /* Product Card */
+    .product-card {
+      background-color: var(--dark-card);
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--gray);
+      height: 100%;
+    }
+    
+    .product-card h3 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    
+    .product-feature {
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+    
+    .product-feature i {
+      color: var(--primary);
+      margin-right: 10px;
+    }
+
+    /* Contact Form */
+    .contact-form {
+      background-color: var(--dark-card);
+      border-radius: 15px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .form-control {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--gray);
+      color: #fff;
+      padding: 12px 15px;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-control:focus {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-color: var(--primary);
+      color: #fff;
+      box-shadow: 0 0 0 0.25rem rgba(255, 215, 0, 0.25);
+    }
+    
+    .form-label {
+      color: #aaa;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    /* About Section */
+    .about-info {
+      margin-bottom: 1.5rem;
+    }
+    
+    .about-info i {
+      color: var(--primary);
+      width: 25px;
+      margin-right: 10px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #111;
+      padding: 30px 0;
+      margin-top: 50px;
+    }
+    
+    .footer-text {
+      color: #aaa;
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .animate-on-scroll {
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+    }
+    
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 3rem;
+      }
+      
+      .section {
+        padding: 70px 0;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .service-card, .product-card, .contact-form {
+        padding: 25px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="overlay">
-        <div class="image-container">
-            <img src="download.jpeg" alt="Suresh Generator Neemrana">
-        </div>
-        <div class="content">
-            <h1>Suresh Generator Neemrana</h1>
-            <div class="contact-info">
-                <p>📞 Contact: +91 9829325775</p>
-                <p>✉️ Email: suresh.powerplus@gmail.com</p>
-                <p>📍 Address: Neemrana, Rajasthan, India</p>
-            </div>
-            <p>Premium power backup solutions for industrial and residential needs. Reliable, efficient, and always ready.</p>
-            <a href="#info" class="btn">Learn More</a>
-        </div>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Suresh Generator</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#services">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#products">Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#location">Location</a>
+          </li>
+        </ul>
+      </div>
     </div>
-    <div class="info-section" id="info">
-        <h2>Why Choose Us?</h2>
-        <p>We deliver top-notch generator services with outstanding maintenance and support. Our generators guarantee durability and maximum efficiency.</p>
-        <div class="services">
-            <div class="service-box">
-                <h3>Industrial Generators</h3>
-                <p>Reliable generators for industries ensuring seamless power supply.</p>
-            </div>
-            <div class="service-box">
-                <h3>Residential Backup</h3>
-                <p>Keep your home powered during outages with high-quality solutions.</p>
-            </div>
-            <div class="service-box">
-                <h3>Maintenance & Repair</h3>
-                <p>Comprehensive servicing and repairs for uninterrupted operations.</p>
-            </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="container hero-content">
+      <h1>Suresh Generator Neemrana</h1>
+      <p>Reliable power solutions for industrial and residential needs with premium quality generators and exceptional service.</p>
+      <a href="#contact" class="btn btn-gold">Get a Quote</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <h2 class="section-title">About Us</h2>
+          <p>With over 15 years of experience, Suresh Generator Neemrana has established itself as a trusted name in power solutions across Rajasthan. We specialize in selling, buying, and renting high-quality generators for various industrial and residential needs.</p>
+          <p>Our comprehensive range includes environmentally friendly and technologically advanced diesel gensets from 7.5 to 3750 kVA, suitable for all types of applications from small homes to large industrial complexes.</p>
+          <div class="about-info mt-4">
+            <p><i class="fas fa-phone-alt"></i><strong> Contact:</strong> +91 9829325775</p>
+            <p><i class="fas fa-envelope"></i><strong> Email:</strong> suresh.powerplus@gmail.com</p>
+            <p><i class="fas fa-map-marker-alt"></i><strong> Address:</strong> Neemrana, Rajasthan, India</p>
+            <p><i class="fas fa-clock"></i><strong> Hours:</strong> Monday-Saturday: 9AM - 7PM</p>
+          </div>
         </div>
+        <div class="col-lg-6">
+          <img src="C:\Users\udgho\Downloads\pa\images.jpeg" alt="Generator" class="img-fluid rounded-3 shadow-lg">
+        </div>
+      </div>
     </div>
-    <div class="map-container">
-        <h2>Our Location</h2>
-        <a href="https://www.google.com/maps?q=Neemrana+Rajasthan" target="_blank">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d448181.1526002219!2d76.82694859999999!3d27.988152949999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3972995fbe5c3b6b%3A0x9c19e3f9459242e!2sNeemrana%2C%20Rajasthan%2C%20India!5e0!3m2!1sen!2sus!4v1636480804824!5m2!1sen!2sus"></iframe>
-        </a>
+  </section>
+
+  <!-- Services Section -->
+  <section class="section bg-dark" id="services">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">Our Services</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="service-card text-center">
+            <div class="service-icon">
+              <i class="fas fa-shopping-cart fa-2x"></i>
+            </div>
+            <h3>Generator Sales</h3>
+            <p>We offer a comprehensive range of new and used generators from leading brands, ensuring you find the perfect power solution for your specific needs.</p>
+            <p>Our expert team provides guidance on selecting the right capacity and features for optimal performance.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-card text-center">
+            <div class="service-icon">
+              <i class="fas fa-tools fa-2x"></i>
+            </div>
+            <h3>Maintenance & Repair</h3>
+            <p>Our skilled technicians provide regular maintenance and emergency repair services to keep your generators running at peak performance.</p>
+            <p>We offer customized service packages with preventive maintenance schedules to extend equipment life.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-card text-center">
+            <div class="service-icon">
+              <i class="fas fa-handshake fa-2x"></i>
+            </div>
+            <h3>Generator Rental</h3>
+            <p>Whether for events, construction sites, or emergency backup, our rental fleet offers flexible short and long-term power solutions.</p>
+            <p>We handle delivery, setup, monitoring, and pickup for a hassle-free rental experience.</p>
+          </div>
+        </div>
+      </div>
     </div>
-</body>
-</html>
+  </section>
+
+  <!-- Products Section -->
+  <section class="section" id="products">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">Our Products</h2>
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <div class="product-card">
+            <h3>Industrial Generators</h3>
+            <div class="row align-items-center">
+              <div class="col-md-4 text-center mb-3 mb-md-0">
+                <i class="fas fa-industry fa-4x" style="color: var(--primary);"></i>
+              </div>
+              <div class="col-md-8">
+                <div class="product-feature">
+                  <i class="fas fa-check"></i> Power range: 50 kVA to 3750 kVA
+                </div>
+                <div class="product-feature">
+                  <i class="fas fa-check"></i> Fuel-efficient operation
+                </div>
+                <div class="product-feature">
+                  <i class="fas fa-check"></i> Low noise levels
+                </div>
+                <div class="product-feature">
+                  <i class="fas fa-check"></i> Advanced control systems
+                </div>
+                <div class="product-feature">
+                  <i class="fas fa-check"></i> Remote monitoring capability
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="product-card">
+            <h3>Residential Generators</h3>
+            <div class="row align-items-center">
+              <div class="col-md-4 text-center mb-3 mb-md-0">
+                <i class="fas fa-home fa-4x" style="color: var(--primary);"></i>
+              </div>
+              <div class="col-md-8">
+                <div class="product-feature">
+                  <i class="fas fa-check"></i> Power range: 7.5 kVA to 45 kVA
+                </div>
+                <div class="product-feature">
+                  <i class="fas fa-check"></i> Automatic transfer switches
+                </div>
+                <div class="product-feature">
+                  <i class="fas fa-check"></i> Quiet operation
+                </div>
+                <div class="product-feature">
+                  <i class="fas fa-check"></i> Compact design
+                </div>
+                <div class="product-feature">
+                  <i class="fas fa-check"></i> Fuel-efficient models
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section bg-dark" id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <h2 class="section-title">Get in Touch</h2>
+          <p class="mb-4">Have questions about our generators or services? Fill out the form and we'll get back to you as soon as possible.</p>
+          <div class="contact-form">
+            <form id="contactForm">
+              <div class="mb-3">
+                <label for="name" class="form-label">Your Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+              </div>
+              <div class="mb-3">
+                <label for="phone" class="form-label">Phone Number</label>
+                <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" required>
+              </div>
+              <div class="mb-3">
+                <label for="message" class="form-label">Your Message</label>
+                <textarea class="form-control" id="message
